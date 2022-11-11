@@ -64,6 +64,18 @@ app.get("/", (req, res) => {
   res.send("Hey from client side!");
 });
 
+const accessChangeRoute = require("./cons_material/routes/accessChangeRoute");
+app.use(accessChangeRoute);
+
+const NewsAPIRoute = require("./cons_material/routes/NewsAPIRoute");
+app.use(NewsAPIRoute);
+
+const registerPageRoute = require("./cons_material/routes/registerPageRoute");
+app.use(registerPageRoute);
+
+const loginPageRoute = require("./cons_material/routes/loginPageRoute");
+app.use(loginPageRoute);
+
 const signupRoute = require("./cons_material/routes/signupRoute");
 app.use(signupRoute);
 

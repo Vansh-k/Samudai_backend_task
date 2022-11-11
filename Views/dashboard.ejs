@@ -5,8 +5,166 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/4a5a212913.js" crossorigin="anonymous"></script>
+    <style>
+      body {
+        background: #eee;
+        padding: 0 16px;
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .header {
+        background-color: #f5ba13;
+        margin: auto -16px;
+        padding: 16px 32px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        display: flex;
+      }
+
+      .header h1 {
+        color: #fff;
+        font-family: "McLaren", cursive;
+        font-weight: 200;
+        margin:  8px !important;
+      }
+      .header h4{
+        color: #fff;
+        font-weight: 200;
+        margin-top: -10px
+      }
+
+      .form {
+        position: relative;
+        width: 300px;
+        margin: 30px auto 20px auto;
+        background: #fff;
+        padding: 15px;
+        border-radius: 7px;
+        box-shadow: 0 1px 5px rgb(138, 137, 137);
+        height: 55px;
+      }
+      .form input{
+        margin: auto;
+        height: 30px;
+        width: 200px;
+      }
+      .news-section{
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 2px 5px #ccc;
+        padding: 10px;
+        width : 70%;
+        margin: 2%;
+      }
+      .link_btn{
+        background-color: #f5ba13;
+        color: #fff; 
+        width:45px; 
+        height: 25px;
+        border-radius: 4%; 
+        border: none; 
+        font-size: smaller; 
+        margin-left: 2px;
+        font-weight: bold;
+      }
+      .link_btn:hover{
+        background-color: #ebcb72;
+        width: 50px;
+        height: 30px;
+      }
+      .change_btn{
+        background-color: #f5ba13;
+        color: #fff; 
+        width: 60px; 
+        height: 25px;
+        border-radius: 4%; 
+        border: none; 
+        font-size: smaller; 
+        margin: 0px 8px;
+        font-weight: bold;
+      }
+      .change_btn:hover {
+        background-color: #ebcb72;
+        width: 65px;
+        height: 25px;
+      }
+      .access-change-section{
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 2px 5px #ccc;
+        padding: 10px;
+        width : 20%;
+        margin: 2%;
+
+      }
+    </style>
   </head>
   <body>
-    Dashboard for <%= dash_type %>
+    <div class="header">
+      <h1>
+        NEWS
+      </h1>
+      <div style="position: absolute; right: 30px;">
+        <h1>
+          <%= name %> <i class="fa-solid fa-user"></i> 
+        </h1>
+        <h4><%= dash_type %> Dashboard</h4>
+      </div>
+      
+    </div>
+    <div class="form">
+      <div style="margin-top: 8px">
+        <form action="" method="post">
+          <input type="text" name="country" placeholder="country" id="" />
+          <input type="hidden" name="dash_type" value= <%= dash_type %> />
+          <input type="hidden" name="name" value= <%= name %> />
+          <button type="submit" style="background-color: #f5ba13; color: #fff; width: 80px; height: 30px;
+           border-radius: 3%; border: none; font-size: medium; margin-left: 2px;">submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div style="display: flex;">
+
+      <div class="news-section">
+        <h1 style="margin: 5px;">Top News Headlines</h1>
+        <% if(JSON.parse(data).length != 0){ %>
+          <% for(var i=0; i < 10; i++) { %>
+            <div class="" style="margin: 25px 0;">
+              <h3 style="margin: 5px!important;"><%= JSON.parse(data).articles[i].title %></h3>
+              <div style="display: flex;">
+                <p style="margin: 5px!important;"> <%= JSON.parse(data).articles[i].description %></p>
+                <a style="margin: 5px!important;" href=<%= JSON.parse(data).articles[i].url %> target="_blank"><button class="link_btn" style="">Link</button></a>
+              </div>
+            </div>
+        <% } %>
+        <% } %>   
+      </div>
+
+      
+        <% if(JSON.parse(uedata).length != 0){ %>
+          <div class="access-change-section">
+            <h1 style="margin: 5px;">Access Change Section!</h1>
+          <% for(var i=0; i < JSON.parse(uedata).rows.length; i++) { %>
+            <div class="" style="margin: 25px 0;">
+              <div style="display: flex;">
+                <h3 style="margin: 0px 8px !important;"> <%= JSON.parse(uedata).rows[i].name %></h3>
+                <h3 style="margin: 0px 8px !important;"> <%= JSON.parse(uedata).rows[i].roll %></h3>
+                <form action="/change" method="post">
+                  <input type="hidden" name="user_id" value= <%= JSON.parse(uedata).rows[i].id %> />
+                  <input type="hidden" name="user_roll" value= <%= JSON.parse(uedata).rows[i].roll %> />
+                  <input type="hidden" name="dash_id" value= <%= dash_id %> />
+                  <button class="change_btn" type="submit">Change</button>
+                </form>
+              </div>
+            </div>
+        <% } %>
+          </div>
+        <% } %>   
+
+    </div>
+   
+
   </body>
 </html>
