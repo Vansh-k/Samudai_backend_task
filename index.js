@@ -60,9 +60,28 @@ client.query(dashboardTable, (err, res) => {
   }
 });
 
+const staticDataTable = `
+  CREATE TABLE IF NOT EXISTS stData (
+    id INTEGER PRIMARY KEY,
+    discription text,
+    head text
+  );
+  `;
+
+client.query(staticDataTable, (err, res) => {
+  if (err) {
+    console.log(err.stack);
+  } else {
+    console.log("table created!");
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("Hey from client side!");
 });
+
+const textChangeRoute = require("./cons_material/routes/textChangeRoute");
+app.use(textChangeRoute);
 
 const accessChangeRoute = require("./cons_material/routes/accessChangeRoute");
 app.use(accessChangeRoute);

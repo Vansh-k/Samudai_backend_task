@@ -42,9 +42,9 @@
         padding: 15px;
         border-radius: 7px;
         box-shadow: 0 1px 5px rgb(138, 137, 137);
-        height: 55px;
+        height: 80px;
       }
-      .form input{
+      .form select{
         margin: auto;
         height: 30px;
         width: 200px;
@@ -54,8 +54,8 @@
         border-radius: 7px;
         box-shadow: 0 2px 5px #ccc;
         padding: 10px;
-        width : 70%;
-        margin: 2%;
+        width : 60%;
+        margin: 2% 1%;
       }
       .link_btn{
         background-color: #f5ba13;
@@ -95,7 +95,7 @@
         box-shadow: 0 2px 5px #ccc;
         padding: 10px;
         width : 20%;
-        margin: 2%;
+        margin: 2% 1%;
 
       }
     </style>
@@ -115,8 +115,17 @@
     </div>
     <div class="form">
       <div style="margin-top: 8px">
+        <h3 style="margin: 8px 0;"> Choose the Country for News</h3>
         <form action="" method="post">
-          <input type="text" name="country" placeholder="country" id="" />
+          <select name="country" class="form-select" aria-label="">
+            <option selected>Country</option>
+            <option value="in">India</option>
+            <option value="us">USA</option>
+            <option value="ae">UAE</option>
+            <option value="jp">Japan</option>
+            <option value="au">Australia</option>
+            <option value="cn">China</option>
+          </select>
           <input type="hidden" name="dash_type" value= <%= dash_type %> />
           <input type="hidden" name="name" value= <%= name %> />
           <button type="submit" style="background-color: #f5ba13; color: #fff; width: 80px; height: 30px;
@@ -142,12 +151,12 @@
         <% } %>   
       </div>
 
-      
-        <% if(JSON.parse(uedata).length != 0){ %>
-          <div class="access-change-section">
-            <h1 style="margin: 5px;">Access Change Section!</h1>
-          <% for(var i=0; i < JSON.parse(uedata).rows.length; i++) { %>
-            <div class="" style="margin: 25px 0;">
+
+      <% if(dash_type == "Admin"){ %>
+        <div class="access-change-section">
+        <h1 style="margin: 5px;">Access Change Section!</h1>
+      <% for(var i=0; i < JSON.parse(uedata).rows.length; i++) { %>
+          <div class="" style="margin: 25px 0;">
               <div style="display: flex;">
                 <h3 style="margin: 0px 8px !important;"> <%= JSON.parse(uedata).rows[i].name %></h3>
                 <h3 style="margin: 0px 8px !important;"> <%= JSON.parse(uedata).rows[i].roll %></h3>
@@ -158,13 +167,25 @@
                   <button class="change_btn" type="submit">Change</button>
                 </form>
               </div>
-            </div>
-        <% } %>
           </div>
-        <% } %>   
+      <% } %>
+        </div>
+      <% } %>   
+
+        <div class="access-change-section">
+          <h1 id="head" style="margin: 5px;"><%= JSON.parse(stData).rows[0].head %></h1>
+          <p id="desc"><%= JSON.parse(stData).rows[0].discription %></p>
+          <% if(dash_type == "Admin" || dash_type == "Editor"){ %>
+            <form action="/textchange" method="post">
+              <input type="text" id="heading_input" placeholder="heading" name="heading">
+              <input type="text" id="desc_input" placeholder="description" name="desc">
+              <input type="hidden" name="dash_id" value= <%= dash_id %> />
+              <button class="textChangeBtn" type="submit">Change!</button>
+            </form>
+          <% } %>   
+
+        </div>
 
     </div>
-   
-
   </body>
 </html>
