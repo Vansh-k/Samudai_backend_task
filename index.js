@@ -87,7 +87,7 @@ client.query(staticDataTable, (err, res) => {
 // });
 
 app.get("/", (req, res) => {
-  res.render("/index");
+  res.render("home");
 });
 
 const textChangeRoute = require("./cons_material/routes/textChangeRoute");
