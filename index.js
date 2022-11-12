@@ -76,7 +76,7 @@ client.query(staticDataTable, (err, res) => {
   }
 });
 
-// const insertStaticdata = `INSERT INTO stData (id, discription, head) 
+// const insertStaticdata = `INSERT INTO stData (id, discription, head)
 // VALUES (1,'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem optio autem nobis quidem assumenda esse sunt numquam ipsam dolor ullam fuga, ea corporis consequatur natus excepturi est eum minima blanditiis.','Section which only admin and editor can edit!');`;
 // client.query(insertStaticdata, (err, res) => {
 //   if (err) {
@@ -116,6 +116,6 @@ app.use(dashboardRoute);
 
 const port = process.env.PORT || 3000;
 
-app.listen(process.env.port||"3000", () => {
+app.listen(process.env.port || "3000", () => {
   console.log("Server Running On Port 3000");
 });
