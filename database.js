@@ -1,10 +1,10 @@
 const { Client } = require("pg");
 
 const client = new Client({
-  user: "postgres",
-  host: "localhost",
-  database: "postgres",
-  password: "418010",
+  user: "obmvzvun",
+  host: "satao.db.elephantsql.com",
+  database: "obmvzvun",
+  password: "W_O7tHFxEjkHNnEXlL0OrjpMhAX9FpiW",
   port: 5432,
 });
 

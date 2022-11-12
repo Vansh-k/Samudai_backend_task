@@ -96,7 +96,21 @@
         padding: 10px;
         width : 20%;
         margin: 2% 1%;
-
+      }
+      .logout-btn{
+        background-color: #fff;
+        height: 40px;
+        width: 65px;
+        border-radius: 8%;
+        margin: 12px 20px;
+        font-weight: 900;
+        font-size: 13px;
+        border: none;
+        color: #f5ba13;
+      }
+      .logout-btn:hover{
+        background-color: #eee;
+        width: 70px;
       }
     </style>
   </head>
@@ -105,11 +119,15 @@
       <h1>
         NEWS
       </h1>
-      <div style="position: absolute; right: 30px;">
-        <h1>
-          <%= name %> <i class="fa-solid fa-user"></i> 
-        </h1>
-        <h4><%= dash_type %> Dashboard</h4>
+      <div style="position: absolute; right: 15px;display: flex;">
+        <div style="margin-top: -12px;">
+          <h1>
+            <%= name %> <i class="fa-solid fa-user"></i> 
+          </h1>
+          <h4><%= dash_type %> Dashboard</h4>
+        </div>
+        <a href="/"><button class="logout-btn">Log Out</button></a>
+        
       </div>
       
     </div>
@@ -183,7 +201,6 @@
               <button class="textChangeBtn" type="submit">Change!</button>
             </form>
           <% } %>   
-
         </div>
 
     </div>
