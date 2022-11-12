@@ -2,7 +2,7 @@
 
 link to the hosted platform -> https://frozen-caverns-73598.herokuapp.com/
 
-I created a News platform with an integrated signup and login page in which users can enlist to see top trending news of various countries depending of the selected country. on their dashboard. The Platform involves three level of access hierarchy viz Admin, Editor and User dashboards. Admin have the permission to select who gets to edit text and which users have only view access i.e. admin grants access types. Editors will have the access to change a text.
+I created a News platform with an integrated signup and login page in which users can enlist to see top trending news of country selected from the list given. The Platform involves three level of access hierarchy viz Admin, Editor and User dashboards. Admin have the permission to select who gets to edit text and which users have only view access i.e. admin grants access types. Editors will have the access to change a text.
 
 I have used Node.js as my backend language and Postgressql database as per the rules of assignment.
 
