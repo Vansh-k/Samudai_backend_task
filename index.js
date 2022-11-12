@@ -87,7 +87,7 @@ client.query(staticDataTable, (err, res) => {
 // });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "../home");
+  res.render("home");
 });
 
 const textChangeRoute = require("./cons_material/routes/textChangeRoute");
@@ -116,6 +116,6 @@ app.use(dashboardRoute);
 
 const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT || "3000", () => {
+app.listen( "3000", () => {
   console.log("Server Running On Port 3000");
 });

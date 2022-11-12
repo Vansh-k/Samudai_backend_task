@@ -26,7 +26,6 @@ router.post("/dashboard/:id", async (req, res) => {
 
   // Standard data
   const stData = await client.query(`SELECT * FROM stData where id = $1`, [1]);
-  console.log(stData);
 
   newsapi.v2
     .topHeadlines({

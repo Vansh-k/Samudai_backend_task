@@ -39,8 +39,6 @@ async function SignUp(req, res) {
                 error: "Database error",
               });
             } else {
-              console.log(result.rows[0].id);
-
               client.query(
                 `INSERT INTO dashboard (user_id, dash_type) VALUES ($1, $2)RETURNING *;`,
                 [result.rows[0].id, result.rows[0].roll],
